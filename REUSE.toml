@@ -1,0 +1,33 @@
+version = 1
+SPDX-PackageName = "docker-discord-irc"
+SPDX-PackageSupplier = "Daniel Wolf <nephatrine@gmail.com>"
+SPDX-PackageDownloadLocation = "https://code.nephatrine.net/NephNET/docker-discord-irc"
+
+[[annotations]]
+path = [".vscode/*"]
+SPDX-FileCopyrightText = "Daniel Wolf <nephatrine@gmail.com>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "override/etc/s6-overlay/s6-rc.d/discord-irc/dependencies.d/*"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "NONE"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "override/etc/s6-overlay/s6-rc.d/discord-irc/type"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "NONE"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "override/etc/s6-overlay/s6-rc.d/user/contents.d/*"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "NONE"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "override/etc/discord-irc.json"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2016 Martin Ek <mail@ekmartin.com>"
+SPDX-License-Identifier = "MIT"

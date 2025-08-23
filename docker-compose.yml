@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: 2025 Daniel Wolf <nephatrine@gmail.com>
+# SPDX-License-Identifier: CC0-1.0
+
+services:
+  discord-irc:
+    build: .
+    container_name: discord-irc
+    environment:
+      TZ: America/New_York
+      PUID: 1000
+      PGID: 1000
+    volumes:
+      - /mnt/containers/discord-irc:/mnt/config

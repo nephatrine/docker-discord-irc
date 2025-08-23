@@ -1,0 +1,39 @@
+[
+  {
+    "nickname": "bot-nickname",
+    "server": "irc.bottest.org",
+    "discordToken": "botwantsin123",
+    "channelMapping": {
+      "#discord": "#irc channel-password",
+      "1234567890": "#channel"
+    },
+    "ircOptions": {
+      "floodProtection": false,
+      "floodProtectionDelay": 1000,
+      "port": "6697",
+      "secure": true,
+      "sasl": true,
+      "username": "bot-username",
+      "password": "p455w0rd"
+    },
+    "format": {
+      "commandPrelude": "Command sent by {$nickname}",
+      "ircText": "<{$displayUsername}> {$text}",
+      "urlAttachment": "<{$displayUsername}> {$attachmentURL}",
+      "discord": "**<{$author}>** {$withMentions}",
+      "webhookAvatarURL": "https://robohash.org/{$nickname}"
+    },
+    "ircNickColor": true,
+    "parallelPingFix": true,
+    "commandCharacters": ["!", "."],
+    "ircStatusNotices": false,
+    "ignoreUsers": {
+      "irc": ["SupyBot"],
+      "discord": ["discord_nick1", "discord_nick2"],
+      "discordIds": ["198528216523210752"]
+    },
+    "webhooks": {
+      "#discord": "https://discord.com/api/webhooks/id/token"
+    }
+  }
+]

@@ -1,0 +1,33 @@
+#!/command/with-contenv /bin/bash
+# SPDX-FileCopyrightText: 2025 Daniel Wolf <nephatrine@gmail.com>
+# SPDX-License-Identifier: ISC
+
+# shellcheck shell=bash
+
+if [ ! -e /mnt/config/etc/discord-irc.json ]; then
+	/command/s6-setuidgid guardian /bin/cp -nv /etc/discord-irc.json /mnt/config/etc/discord-irc.json
+	if [ -n "${IRC_SERVER}" ]; then
+		sed -i "s/irc.testbot.org/${IRC_SERVER}/g" /mnt/config/etc/discord-irc.conf
+	fi
+	if [ -n "${IRC_NICK}" ]; then
+		sed -i "s/bot-nickname/${IRC_NICK}/g" /mnt/config/etc/discord-irc.conf
+	fi
+	if [ -n "${IRC_SASL_USER}" ]; then
+		sed -i "s/bot-username/${IRC_SASL_USER}/g" /mnt/config/etc/discord-irc.conf
+	fi
+	if [ -n "${IRC_SASL_PASS}" ]; then
+		sed -i "sp455w0rd/${IRC_SASL_PASS}/g" /mnt/config/etc/discord-irc.conf
+	fi
+	if [ -n "${DISCORD_TOKEN}" ]; then
+		sed -i "s/botwantsin123/${DISCORD_TOKEN}/g" /mnt/config/etc/discord-irc.conf
+	fi
+fi
+/command/s6-setuidgid guardian /bin/cp -v /etc/discord-irc.json /mnt/config/etc/discord-irc.json.example
+
+while grep -q 'botwantsin123' /mnt/config/etc/discord-irc.json; do
+	echo "Please configure discord-irc.json to continue."
+	sleep 30
+done
+if ! grep -q 'botwantsin123' /mnt/config/etc/discord-irc.json; then
+	/command/s6-setuidgid guardian discord-irc --config /mnt/config/etc/discord-irc.json
+fi
